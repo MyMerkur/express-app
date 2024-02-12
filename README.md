@@ -7,7 +7,7 @@ Getting Started
 
 To run the project locally, follow these steps:
 
-1- Clone the project: git clone https://github.com/MyMerkur/node-express-app.git
+1- Clone the project: git clone https://github.com/MyMerkur/node-express-app.git <br/>
 2- Navigate to the project directory: cd node-express-app
 3- Install dependencies: npm install
 
