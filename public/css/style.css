@@ -1,0 +1,68 @@
+a{
+    text-decoration: none;
+}
+
+nav .navbar-nav{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.3rem;
+}
+nav .nav-item.nav-link{
+    color: goldenrod;
+    font-family:'Times New Roman', Times, serif ;
+}
+.home-title{
+    color: goldenrod;
+}
+nav a img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.navbar-nav a{
+    cursor: pointer;
+}
+
+.about-img{
+    width: 80%;
+    border-radius: 18px;
+}
+
+.about-section.p-5 img{
+    border-radius:  4% ;
+}
+.about-section button{
+    background-color: goldenrod;
+    border: 1px solid black;
+    border-radius: 18px;
+}
+
+.about-section button a{
+    text-decoration: none;
+    color: black;
+}
+
+.user{
+    color: black;
+}
+.userReservation{
+    color: red;
+}
+.admin{
+    color: white;
+}
+
+
+.login-page{
+    display: flex;
+    align-items: center;
+}
+.login-page img{
+    width: 10%;
+}
+
+footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+  }

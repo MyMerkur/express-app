@@ -1,0 +1,14 @@
+div#carouselExampleAutoplaying.carousel.slide(data-bs-ride="carousel")
+  div.carousel-inner
+    if cafeImages.length > 0
+      each image, index in cafeImages 
+        div.carousel-item(class=index === 0 ? 'active' : '') 
+          img(src=`${image.filename}`, alt=image.alt, class="d-block w-100" height="700px")
+
+  button(type="button", data-bs-target="#carouselExampleAutoplaying", data-bs-slide="prev").carousel-control-prev
+    span(aria-hidden="true").carousel-control-prev-icon
+    span.visually-hidden Previous
+
+  button(type="button", data-bs-target="#carouselExampleAutoplaying", data-bs-slide="next").carousel-control-next
+    span(aria-hidden="true").carousel-control-next-icon
+    span.visually-hidden Next

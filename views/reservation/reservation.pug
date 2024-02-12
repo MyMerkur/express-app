@@ -1,0 +1,39 @@
+extends ../layout/main-layout.pug
+
+block content
+    h1.home-title Rezervasyon
+    span Rezervasyonlarınızı bu sayfa üzerinden yapabilirsiniz 
+        ol 
+            li Lütfen rezervasyon bilgilerini eksiksiz doldurun.
+            li Rezervasyonunuzun durumunu 
+                a(href="/user").userReservation 'Profil' 
+                | üzerinden takip edebilirsiniz.
+            li Rezervasyonunuzu onayladıktan sonra size bir bilgilendirme mail'i göndereceğiz.
+            
+
+
+    form(action="/reservation", method="POST") 
+        input(type="hidden" name="_csrf" value=`${csrfToken}`) 
+        div.mb-3
+            label(for="name").form-label Ad-Soyad:
+            input(type="text" name="name" aria-describedby="emailHelp" value = isAuthenticated ? user.name : '').form-control#exampleInputEmail1
+           
+        div.mb-3
+            label(for="exampleInputEmail1").form-label Email: 
+            input(type="email" name="email" aria-describedby="emailHelp" value = isAuthenticated ? user.email : '').form-control#exampleInputEmail1
+           
+        div.mb-3
+            label(for="date").form-label Tarih: 
+            input(type="date" name="date" aria-describedby="emailHelp").form-control#exampleInputEmail1
+           
+        div.mb-3
+            label(for="time").form-label Saat:
+            input(type="time" name="time").form-control#exampleInputPassword1
+        
+
+        div.mb-3
+            label(for="person").form-label Kişi Sayısı:
+            input(type="number" name="person").form-control#exampleInputPassword1
+        
+        
+        button(type="submit").btn.btn-dark Rezervasyonu Onayla

@@ -1,0 +1,20 @@
+extends ../layout/main-layout.pug
+
+block content 
+    .row 
+        .col-md-12 
+            .row 
+                if products.length > 0
+                    each product in products 
+                       .container
+                            .row 
+                                .col-6 
+                                    div(style="width: 18rem;").card
+                                        div.card-body
+                                            img(src=`/img/${product.imageUrl}`, alt="")
+                                            h5.card-title #{product.name}
+                                            p.card-text #{product.description}
+                                            a(href=`/products/${product._id}`).btn.btn-primary Ürünü İncele
+                                       
+                else    
+                    h1 Ürün Yok

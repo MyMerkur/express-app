@@ -1,0 +1,80 @@
+extends ../layout/main-layout.pug
+
+block content
+
+    if action !== 'undefined' && action === 'delete'
+        div.alert.alert-danger
+            | Rezervasyon Silindi
+
+    if action !== 'undefined' && action === 'sumbit'
+        div.alert.alert-submit
+            | Rezervasyon Onaylandı
+
+    h1 Gelen Rezervasyonlar
+    hr
+    if reservations.length > 0
+            table.table.table-bordered
+                thread 
+                    tr 
+                        th(style="width:100px;") Ad-Soyad
+                        th(style="width:100px;") Mail
+                        th(style="width:100px;") Tarih
+                        th(style="width:100px;") Saat
+                        th(style="width:100px;") Kişi Sayısı
+                        th(style="width:100px;") İşlemler
+                        
+                tbody 
+                    each reservation in reservations 
+                        tr
+                            td #{reservation.name}
+                            td #{reservation.email}
+                            td #{reservation.date}
+                            td #{reservation.time}
+                            td #{reservation.person}
+                            td(style="width:100px;")  
+
+                                form(action="/admin/admin-reservation/submit-reservation", method="POST") 
+                                    input(type="hidden" name="_csrf" value=`${csrfToken}`) 
+                                    input(type="hidden" name="reservationid" value=`${reservation._id}`)
+                                    button(type="submit").btn.btn-primary Onayla 
+
+                                form(action="/admin/admin-reservation/delete-reservation", method="POST") 
+                                    input(type="hidden" name="_csrf" value=`${csrfToken}`)   
+                                    input(type="hidden" name="reservationid" value=`${reservation._id}`)
+                                    button(type="submit").btn.btn-danger Sil
+    else 
+        div.alert.alert-secondary
+           | Gelen Hiçbir Rezervasyon Bulunamadı
+        
+
+    
+    h1 Onaylanan rezervasyonlar
+    hr
+    if confirmedReservations.length > 0
+
+            table.table.table-bordered
+                thread 
+                    tr 
+                        th(style="width:100px;") Ad-Soyad
+                        th(style="width:100px;") Mail
+                        th(style="width:100px;") Tarih
+                        th(style="width:100px;") Saat
+                        th(style="width:100px;") Kişi Sayısı
+                        th(style="width:100px;") İşlemler
+                        
+                tbody 
+                    each reservation in confirmedReservations 
+                        tr
+                            td #{reservation.name}
+                            td #{reservation.email}
+                            td #{reservation.date}
+                            td #{reservation.time}
+                            td #{reservation.person}
+                            td 
+                                form(action="/admin/admin-reservation/delete-reservation", method="POST") 
+                                    input(type="hidden" name="_csrf" value=`${csrfToken}`)   
+                                    input(type="hidden" name="reservationid" value=`${reservation._id}`)
+                                    button(type="submit").btn.btn-danger Sil
+    else 
+        div.alert.alert-secondary
+           | Onaylanan Hiçbir Rezervasyon Bulunamadı

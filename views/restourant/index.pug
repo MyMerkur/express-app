@@ -1,0 +1,77 @@
+extends ../layout/main-layout.pug
+
+block content
+
+    .container.mt-5
+        .row
+            .col-lg-6.col-sm-12
+                div.carousel.slide#carouselExampleIndicators
+                    div.carousel-indicators 
+                        button.active(type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" aria-current="true" aria-label="Slide 1")
+                        button(type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2")
+                        button(type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3")
+                    div.carousel-inner
+                        div.carousel-item.active 
+                            img.d-block.w-100.rounded(src="/img/316280986_139534192205344_391025657851819263_n.jpg" alt="main-img1")
+                        
+                        div.carousel-item 
+                            img.d-block.w-100.rounded(src="/img/316282178_140857938739636_6176998344732303941_n.jpg" alt="main-img2")
+                        
+                        div.carousel-item 
+                            img.d-block.w-100.rounded(src="/img/318873500_144331531725610_6951133913247239327_n.jpg" alt="main-img3")
+                    
+                    button.carousel-control-prev(type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev")
+                        span.carousel-control-prev-icon(aria-hidden="true")
+                        span.visually-hidden Previous
+                    
+                    button.carousel-control-next(type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next")
+                        span.carousel-control-next-icon(aria-hidden="true")
+                        span.visually-hidden Next
+            .col-lg-6.col-sm-12.text-center
+                h1.home-title Yöresel Lezzetlerin Buluşma Noktası
+                p 
+                   | Agara Cafe Restoran, sadece mükemmel yemekler sunmakla kalmaz, aynı zamanda samimi bir atmosfer sunar. Her ziyaretçiyi sıcak bir karşılama ile ağırlayan restoranımız, yerel malzemelerle hazırlanan her tabakta özenli dokunuşunu hissettirir.
+                   | Menümüz, geniş bir yelpazede yöresel yemeklerini sunar. Günlük olarak taze ve kaliteli malzemelerle hazırlanan çorbalarımız, enfes mezelerimiz, ana yemeklerimiz ve tatlılarımız, lezzet tutkunlarını memnun etmek için özenle seçilmiş malzemelerle hazırlanır.
+                   | Her bir tabağın ardında, Ardahan mutfağı geleneğini ve ustalığını hissedersiniz. Misafirlerimizin keyifli ve rahat bir deneyim yaşaması için çalışan profesyonel personelimiz, her ayrıntıyı özenle düşünür ve en iyi hizmeti sunar.
+                   | Agara Cafe Restoran, Ardahan'nın tarihi ve kültürel dokusunu yansıtan bir lezzet noktasıdır. Yöresel mutfağının eşsiz tatlarını modern bir dokunuşla sunan restoranımız, her ziyaretçiye unutulmaz bir deneyim vaat eder.
+    
+    div.about-section.p-5.mt-5
+        .container 
+            .row 
+                .col-lg-6.col-sm-12.text-center.about-content
+                    .container
+                        h1.home-title Agara Cafe'ye Hoşgeldiniz !
+                        h5 Hakkımızda 
+                        p Sıcakkanlı bir gülümseme ve enfes lezzetlerle dolu bir deneyim için Agara Cafe Restoran'a hoş geldiniz! Bizler, her bir misafirimizi bir aile ferdi gibi karşılıyoruz ve size unutulmaz bir yemek deneyimi sunmak için buradayız. Siz de bu lezzet dolu deneyimi yaşamak için bizi ziyaret edebilir ve rezervasyon yapabilirsiniz. Web sitemizden kolayca rezervasyon yapabilir veya iletişim bilgilerimizi kullanarak bizi arayabilirsiniz. Ekibimiz, size unutulmaz bir deneyim yaşatmak için sabırsızlıkla bekliyor!
+                        button.reservation-btn
+                            a(href="/reservation") Rezervasyon 
+                .col-lg-6.col-sm-12   
+                    img(src="/img/cafe_images/cafe_bg1.jpg", alt="cafe-bg" width="100%")
+   
+    .container
+        .row.justify-content-center
+            if reviews.length > 0
+                each review in reviews
+                    div.card.mt-5
+                        div.card-body
+                            p.card-text.text-center
+                                each star in Array(review.rating)
+                                    small.fa.fa-star.text-warning.mr-3
+                            p.text-center #{review.text}
+                            h5.card-title.text-center #{review.author_name}
+                            p.card-text.text-center  #{review.relative_time_description}
+                            div.d-flex.justify-content-center
+                                img.img-fluid.rounded-start(src=`${review.profile_photo_url}`, alt="")
+                     
+
+                            
+
+                        
+
+
+    
+
+                   
+
+                
+       

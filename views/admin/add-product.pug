@@ -1,0 +1,37 @@
+extends ../layout/main-layout.pug
+
+block content 
+    .container.mt-5
+        form(action="/admin/add-product", method="POST" enctype="multipart/form-data") 
+            input(type="hidden" name="_csrf" value=`${csrfToken}`)
+            .form-group.row
+                label(for="name").col-sm-2.col-form-label Ürün İsmi
+                .col-sm-10
+                    input.form-control#productName(type="text" name="name")
+                                
+            .form-group.row
+                label(for="price").col-sm-2.col-form-label Ürün  Fiyatı
+                .col-sm-10
+                    input.form-control#price(type="text" name="price")
+                
+            .form-group.row   
+                label(for='description').col-sm-2.col-form-label Ürün Açıklaması
+                .col-sm-10 
+                    input.form-control#description(type="text" name="description")
+
+            .form-group.row 
+                label(for='categoryId').col-sm-2.col-form-label Kategori 
+                .col-sm-10 
+                    select.form-control(name="categoryId")
+                        option(value="-1") Kategori Seç
+                        each category in categories 
+                            option(value=`${category.id}`) #{category.name}   
+            .form-group.row 
+                label(for="imageUrl").col-sm-2.col-form-label Ürün Görseli
+                .col-sm-10 
+                    input.form-control-file#image(type="file" name="image")
+
+            .form-group.row 
+                .col-sm-10.offset-sm-2 
+                    input(type="submit" value="Ürünü Ekle").btn.btn-primary 
+            

@@ -1,0 +1,12 @@
+extends ../layout/main-layout.pug
+
+block content 
+    .container 
+        div.card.mb-3 
+            img.card-img-top(src="..." alt="...")
+            div.card-body
+                img(src=`/img/${product.imageUrl}`, alt="")
+                h5.card-title #{product.name}
+                p.card-text #{product.price}
+                p.card-text.text-body-secondary #{product.description}
+          

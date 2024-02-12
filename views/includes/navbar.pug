@@ -1,0 +1,50 @@
+nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  div.container-fluid
+    a.navbar-brand(href="/")
+      img(src="/img/logo.png", alt="logo")
+    
+    button.navbar-toggler(type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation")
+      span.navbar-toggler-icon
+
+    div.collapse.navbar-collapse#navbarNav.justify-content-between
+      div.navbar-nav
+        a.nav-item.nav-link(href="/") Anasayfa
+        a.nav-item.nav-link(href="/about") Hakkımızda
+        a.nav-item.nav-link(href="/reservation") Rezervasyon
+        if isAuthenticated
+          a.nav-item.nav-link(href="/products") Menu
+          a.nav-item.nav-link(href="/galery") Galeri
+      div.navbar-nav.ml-auto
+        if isAuthenticated
+          if !isAdmin
+            a.nav-item.nav-link.user(href="/user") #{user.name}
+          else if isAdmin
+            div.btn-group
+              button.btn.btn-success(type="button")
+                a.nav-item.nav-link.admin(href="/user") #{user.name} (Yönetici)
+              button.btn.btn-success.dropdown-toggle.dropdown-toggle-split(type="button" data-bs-toggle="dropdown" aria-expanded="false")
+                span.visually-hidden Toggle Dropdown
+              ul.dropdown-menu 
+                li
+                  a.dropdown-item(href="/admin/admin-reservation") 
+                    i.fa-solid.fa-book-open
+                    | Rezervasyonlar
+                li
+                  a.dropdown-item(href="/admin/products") 
+                    i.fa-solid.fa-utensils
+                    | Ürünler
+                li
+                  a.dropdown-item(href="/admin/categories") 
+                    i.fa-solid.fa-list
+                    | Kategoriler  
+                li
+                  a.dropdown-item(href="/admin/add-product") 
+                    i.fa-solid.fa-circle-plus
+                    | Ürün Ekle
+                li
+                  a.dropdown-item(href="/admin/add-category") 
+                    i.fa-solid.fa-circle-plus
+                    | Kategori Ekle
+          a.nav-item.nav-link(href="/logout") Çıkış Yap
+        else
+          a.nav-item.nav-link(href="/login") Giriş Yap
